@@ -1,0 +1,35 @@
+
+//importazione librerie necessarie
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class AssistenzaSanitariaAI {
+    public static void main(String[] args) {
+        //inizializzazione della mappa dei sintomi e dei trattamenti
+        HashMap<String, String> sintomi = new HashMap<String, String>();
+        sintomi.put("tosse", "potrebbe essere un'infezione alle vie respiratorie, ti consiglio di consultare un medico e di assumere farmaci per la tosse");
+        sintomi.put("febbre", "potrebbe essere un'infezione virale o batterica, ti consiglio di consultare un medico e di assumere farmaci antipiretici");
+        sintomi.put("dolori muscolari", "potrebbe essere un'influenza o una lesione muscolare, ti consiglio di assumere antidolorifici e di riposare");
+
+        //inizializzazione della classe scanner per l'input dell'utente
+        Scanner scanner = new Scanner(System.in);
+
+        //richiesta dei sintomi all'utente
+        System.out.println("Inserisci i tuoi sintomi separati da una virgola:");
+        String input = scanner.nextLine();
+        String[] elencoSintomi = input.split(",");
+
+        //analisi dei sintomi inseriti dall'utente
+        for (String sintomo : elencoSintomi) {
+            String trattamento = sintomi.get(sintomo);
+            if (trattamento != null) {
+                System.out.println(trattamento);
+            } else {
+                System.out.println("Non ho trovato nessun trattamento per il sintomo " + sintomo);
+            }
+        }
+
+        //chiusura della classe scanner
+        scanner.close();
+    }
+}
